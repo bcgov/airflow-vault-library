@@ -1,0 +1,9 @@
+.txt
+.env
+!logs/
+logs/*
+!logs/.gitkeep
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
