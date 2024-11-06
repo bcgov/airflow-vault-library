@@ -7,6 +7,7 @@ from operators.broker_intention_open import BrokerOpenIntention
 from operators.broker_action_start import BrokerActionStart
 from operators.broker_vault_login import VaultLoginProcessor
 from operators.broker_action_end import BrokerActionEnd
+from operators.broker_vault_revoke import VaultTokenRevoker
 
 class VaultSecretRequestOperator(BaseOperator):
     @apply_defaults
@@ -89,6 +90,9 @@ class VaultSecretRequestOperator(BaseOperator):
         #print(f"secrets data: {secrets_data}")
         secrets = {key: value for key, value in secrets_data.items()}
         #print(f"formatted secrets data: {secrets}")
+
+        revoker = VaultTokenRevoker(self.vault_url, vault_token)
+        revoker.revoke_token()
 
         vault_action_close = BrokerActionEnd(self.broker_url,vault_login_token).end_action()
         print(f"Action ends with return code {vault_action_close}")
