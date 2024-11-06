@@ -6,7 +6,8 @@ from operators.broker_vault_login import VaultLoginProcessor
 from operators.broker_action_end import BrokerActionEnd
 from operators.broker_intention_close import BrokerCloseIntention
 from operators.vault_operators import VaultSecretRequestOperator
+from operators.broker_vault_revoke import VaultTokenRevoker
 
 class MyCustomPlugin(AirflowPlugin):
     name = "my_custom_plugin"
-    operators = [BrokerUtils, BrokerOpenIntention, BrokerActionStart, VaultLoginProcessor, BrokerActionEnd, BrokerCloseIntention, VaultSecretRequestOperator]
+    operators = [BrokerUtils, BrokerOpenIntention, BrokerActionStart, VaultLoginProcessor, VaultTokenRevoker, BrokerActionEnd, BrokerCloseIntention, VaultSecretRequestOperator]

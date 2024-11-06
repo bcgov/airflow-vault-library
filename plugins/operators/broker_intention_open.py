@@ -15,11 +15,11 @@ class BrokerOpenIntention:
         """
         print("===> Intention open")
         json_data = json.dumps(self.intention_data, indent=2)
-        print(json_data)  # Print intention data
+        #print(json_data)  # Print intention data
 
         # Initialize URL parameters
         url_params = self._build_url_params()
-        print(f"broker_jwt {self.broker_jwt}")
+        #print(f"broker_jwt {self.broker_jwt}")
 
         post_url = f"{self.broker_url}/v1/intention/open{url_params}"
         headers = {
@@ -37,15 +37,15 @@ class BrokerOpenIntention:
             raise Exception(error_message)
 
         response_data = response.json()
-        print(json.dumps(response_data, indent=2))
+        #print(json.dumps(response_data, indent=2))
 
         # Save intention token and intention ID to the environment
         intention_token = response_data.get('token')
         intention_id = response_data.get('id')
-        print(f"intention token: {intention_token}")
+        #print(f"intention token: {intention_token}")
         print(f"intention id: {intention_id}")
         action_tokens = self._save_action_tokens(response_data)
-        print(f"intention tokens-array: {json.dumps(action_tokens)}")
+        #print(f"intention tokens-array: {json.dumps(action_tokens)}")
 
         print("Success")
         return {

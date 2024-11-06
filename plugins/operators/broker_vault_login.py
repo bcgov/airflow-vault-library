@@ -15,10 +15,10 @@ class VaultLoginProcessor:
 
         # Get wrapped Vault token
         wrapped_vault_token_json = self._get_wrapped_token()
-        print(json.dumps(wrapped_vault_token_json))
+        #print(json.dumps(wrapped_vault_token_json))
 
         wrapped_vault_token = wrapped_vault_token_json.get('wrap_info', {}).get('token')
-        print(f"wrpped token:{wrapped_vault_token}")
+        #print(f"wrpped token:{wrapped_vault_token}")
 
         if self.wrap_token:
             vault_token = wrapped_vault_token
